@@ -36,18 +36,6 @@ services:
 
   EXAMPLE_SERVICE:
     deploy:
-      labels:
-        - traefik.frontend.rule=Host:EXAMPLE_SERVICE.${DOMAIN}
-        - traefik.enable=true
-        # You'll need to set applicaiton's port here.
-        - traefik.port=SET_ME_PLEASE
-        - traefik.tags=ingress 
-        - traefik.docker.network=${STACK_NAME:-technocore}_EXAMPLE_SERVICE
-        # Traefik service that listens to HTTP
-        - traefik.redirectorservice.frontend.entryPoints=http
-        - traefik.redirectorservice.frontend.redirect.entryPoint=https
-        # Traefik service that listens to HTTPS
-        - traefik.webservice.frontend.entryPoints=https
       mode: global
       restart_policy:
         condition: any
