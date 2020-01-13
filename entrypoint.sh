@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# Using socat to forward all traffic directed to the wrapper container on to the actual application.
+# https://stackoverflow.com/questions/46099874/how-can-i-forward-a-port-from-one-docker-container-to-another
+socat TCP-LISTEN:${SERVICE_PORT},fork TCP:${STACK_NAME}_${SERVICE_NAME}_app:${SERVICE_PORT} &
+
 env_vars=""
 IFS_BACK=$IFS
 IFS="
@@ -30,5 +34,6 @@ docker run --rm \
     $PORTS  \
     $VOLUMES_TO_MOUNT \
     $CAP_PRIVS \
-    $IMAGE_TO_RUN
+    $IMAGE_TO_RUN \
+    $COMMAND
 

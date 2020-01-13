@@ -14,7 +14,7 @@ volumes:
 #secrets:
   # Secrets format
   # ${service_name}_${mount_point}:
-  #   name: ${stack_name:-technocore}_${service_name}_${mount_point}
+  #   name: ${STACK_NAME:-technocore}_${service_name}_${mount_point}
   # #   external: true
   EXAMPLE_SERVICE_admin_username:
     name: ${STACK_NAME:-technocore}_EXAMPLE_SERVICE_admin_username

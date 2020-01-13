@@ -1,7 +1,7 @@
 FROM docker:18.09 AS base
 
 FROM alpine:latest
-RUN apk add --no-cache bash 
+RUN apk add --no-cache bash socat
 COPY --from=base / /
 
 # Set up the CMD as well as the pre and post hooks.
