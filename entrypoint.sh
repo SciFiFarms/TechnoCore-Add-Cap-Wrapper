@@ -25,10 +25,13 @@ for env_var in $( env ); do
     env_vars=" $env_vars -e $env_var "
 done
 IFS=$IFS_BACK
+# TODO: Add check for already running _app
+    #--network ${STACK_NAME}_${SERVICE_NAME} \
 
 docker run --rm \
     --name ${STACK_NAME}_${SERVICE_NAME}_app \
     -t \
+    -l com.ouroboros.enable=true \
     $NETWORKS \
     $env_vars \
     $PORTS  \
